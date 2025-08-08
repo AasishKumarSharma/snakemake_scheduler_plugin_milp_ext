@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=40.6.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "snakemake-scheduler-plugin-milp-ext"
+version = "0.1.0"
+description = "A Mixed-Integer Linear Programming (MILP) scheduler plugin for Snakemake"
+readme = "README.md"
+authors = [{ name="Aasish Kumar Sharma", email="aasish.sharma@uni-goettingen.de" }]
+license = { text="MIT" }
+dependencies = [
+    "snakemake-interface-scheduler-plugins>=2.0.0,<3.0.0",
+    "pulp>=2.0",
+    "networkx>=2.5",
+    "pyyaml>=5.0"
+]
+requires-python = ">=3.11"
+
+[project.urls]
+Homepage = "https://github.com/AasishKumarSharma/snakemake-scheduler-plugin-milp-ext"
+Issues = "https://github.com/AasishKumarSharma/snakemake-scheduler-plugin-milp-ext/issues"
+
+[project.entry-points."snakemake.scheduler_plugins"]
+milp-ext = "snakemake_scheduler_plugin_milp_ext:Scheduler"

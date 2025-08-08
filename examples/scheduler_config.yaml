@@ -1,0 +1,16 @@
+scheduler:
+  type: milp
+  paths:
+    system_profile: "system_profile.json"
+    job_history: "~/.snakemake/job_history"
+  estimation:
+    auto_estimate_file_sizes: true
+    history:
+      enabled: true
+      adaptation_weight: 0.7
+  optimization:
+    objective_weights:
+      makespan: 0.8
+      energy: 0.2
+    time_limit_seconds: 30
+    fallback: "greedy"

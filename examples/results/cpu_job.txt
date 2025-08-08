@@ -1,0 +1,2 @@
+Running CPU-intensive job on aasish-Latitude-7420
+Features required: CPU, AVX2

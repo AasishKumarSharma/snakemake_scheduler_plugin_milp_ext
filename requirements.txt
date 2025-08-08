@@ -1,0 +1,4 @@
+snakemake-interface-scheduler-plugins>=2.0.0,<3.0.0
+pulp>=2.0
+networkx>=2.5
+pyyaml>=5.0

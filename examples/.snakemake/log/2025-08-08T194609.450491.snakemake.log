@@ -1,0 +1,92 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: aasish-Latitude-7420
+Building DAG of jobs...
+shared_storage_local_copies: True
+remote_exec: False
+Submitting maximum 100 job(s) over 1.0 second(s).
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+cpu_intensive          1
+gpu_computation        1
+total                  3
+
+Resources before job selection: {'_cores': 4, '_nodes': 9223372036854775807, '_job_count': 9223372036854775807}
+Ready jobs: 2
+Select jobs to execute...
+Selecting jobs to run using greedy solver.
+Selected jobs: 1
+Resources after job selection: {'_cores': 2, '_nodes': 9223372036854775806, '_job_count': 100}
+Execute 1 jobs...
+[Fri Aug  8 19:46:09 2025]
+localrule gpu_computation:
+    output: results/gpu_job.txt
+    jobid: 2
+    reason: Missing output files: results/gpu_job.txt
+    threads: 2
+    resources: tmpdir=/tmp, mem_mb=8192, mem_mib=7813, runtime=20
+
+Waiting for more resources.
+Resources before job selection: {'_cores': 2, '_nodes': 9223372036854775806, '_job_count': 100}
+Ready jobs: 1
+Select jobs to execute...
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 2, '_nodes': 9223372036854775806, '_job_count': 100}
+Resources before job selection: {'_cores': 2, '_nodes': 9223372036854775806, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 0
+Resources after job selection: {'_cores': 2, '_nodes': 9223372036854775806, '_job_count': 100}
+Job history saved to /home/aasish/.snakemake/job_history/c79d0141b695f9e8722c0f758e456e1d.json
+[Fri Aug  8 19:46:12 2025]
+Finished jobid: 2 (Rule: gpu_computation)
+1 of 3 steps (33%) done
+Resources before job selection: {'_cores': 4, '_nodes': 9223372036854775807, '_job_count': 100}
+Ready jobs: 1
+Selecting jobs to run using greedy solver.
+Selected jobs: 1
+Resources after job selection: {'_cores': 0, '_nodes': 9223372036854775806, '_job_count': 100}
+Execute 1 jobs...
+[Fri Aug  8 19:46:12 2025]
+localrule cpu_intensive:
+    output: results/cpu_job.txt
+    jobid: 1
+    reason: Missing output files: results/cpu_job.txt
+    threads: 4
+    resources: tmpdir=/tmp, mem_mb=4096, mem_mib=3907, runtime=15
+
+Waiting for more resources.
+Job history saved to /home/aasish/.snakemake/job_history/a192be89faf341d9a62e4774aa19a76d.json
+[Fri Aug  8 19:46:17 2025]
+Finished jobid: 1 (Rule: cpu_intensive)
+2 of 3 steps (67%) done
+Resources before job selection: {'_cores': 4, '_nodes': 9223372036854775807, '_job_count': 100}
+Ready jobs: 1
+Select jobs to execute...
+Selecting jobs to run using greedy solver.
+Selected jobs: 1
+Resources after job selection: {'_cores': 3, '_nodes': 9223372036854775806, '_job_count': 100}
+Execute 1 jobs...
+[Fri Aug  8 19:46:17 2025]
+localrule all:
+    input: results/cpu_job.txt, results/gpu_job.txt
+    jobid: 0
+    reason: Input files updated by another job: results/cpu_job.txt, results/gpu_job.txt
+    resources: tmpdir=/tmp
+
+Waiting for more resources.
+Job history saved to /home/aasish/.snakemake/job_history/55c40f0e1506a4070954bdfb0c05dcc6.json
+[Fri Aug  8 19:46:17 2025]
+Finished jobid: 0 (Rule: all)
+3 of 3 steps (100%) done
+Complete log(s): /home/aasish/Documents/PhD/Work/WorkingProjects/snakemake_scheduler_plugin_milp_opt/examples/.snakemake/log/2025-08-08T194609.450491.snakemake.log
+unlocking
+removing lock
+removing lock
+removed all locks

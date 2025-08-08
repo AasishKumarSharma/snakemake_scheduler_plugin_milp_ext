@@ -1,0 +1,40 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: aasish-Latitude-7420
+Building DAG of jobs...
+shared_storage_local_copies: True
+remote_exec: False
+Submitting maximum 100 job(s) over 1.0 second(s).
+Using shell: /usr/bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job      count
+-----  -------
+all          1
+total        1
+
+Resources before job selection: {'_cores': 4, '_nodes': 9223372036854775807, '_job_count': 9223372036854775807}
+Ready jobs: 1
+Select jobs to execute...
+Selecting jobs to run using greedy solver.
+Selected jobs: 1
+Resources after job selection: {'_cores': 3, '_nodes': 9223372036854775806, '_job_count': 100}
+Execute 1 jobs...
+[Fri Aug  8 19:47:45 2025]
+localrule all:
+    input: results/cpu_job.txt, results/gpu_job.txt
+    jobid: 0
+    reason: Forced execution
+    resources: tmpdir=/tmp
+
+Job history saved to /home/aasish/.snakemake/job_history/55c40f0e1506a4070954bdfb0c05dcc6.json
+Waiting for more resources.
+[Fri Aug  8 19:47:45 2025]
+Finished jobid: 0 (Rule: all)
+1 of 1 steps (100%) done
+Complete log(s): /home/aasish/Documents/PhD/Work/WorkingProjects/snakemake_scheduler_plugin_milp_opt/examples/.snakemake/log/2025-08-08T194745.505774.snakemake.log
+unlocking
+removing lock
+removing lock
+removed all locks

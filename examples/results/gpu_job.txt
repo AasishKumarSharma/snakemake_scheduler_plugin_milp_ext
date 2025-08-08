@@ -1,0 +1,2 @@
+Running GPU computation on aasish-Latitude-7420
+Features required: GPU, CUDA

@@ -1,0 +1,57 @@
+configfile: "scheduler_config.yaml"
+
+rule all:
+    input:
+        "results/cpu_job.txt",
+        "results/gpu_job.txt"
+
+rule cpu_intensive:
+    output:
+        "results/cpu_job.txt"
+    threads: 4
+    resources:
+        mem_mb=4096,
+        runtime=15
+    params:
+        job_specification={
+            "features": ["cpu", "avx2"],
+            "resources": {
+                "input_size_mb": 500,
+                "output_size_mb": 200
+            },
+            "properties": {
+                "cpu_flops": 5e10
+            }
+        }
+    shell:
+        """
+        echo "Running CPU-intensive job on $(hostname)" > {output}
+        echo "Features required: CPU, AVX2" >> {output}
+        sleep 5
+        """
+
+rule gpu_computation:
+    output:
+        "results/gpu_job.txt"
+    threads: 2
+    resources:
+        mem_mb=8192,
+        runtime=20
+    params:
+        job_specification={
+            "features": ["gpu", "cuda"],
+            "resources": {
+                "gpu_memory_mb": 4000,
+                "input_size_mb": 1000,
+                "output_size_mb": 500
+            },
+            "properties": {
+                "gpu_flops": 1e12
+            }
+        }
+    shell:
+        """
+        echo "Running GPU computation on $(hostname)" > {output}
+        echo "Features required: GPU, CUDA" >> {output}
+        sleep 3
+        """
