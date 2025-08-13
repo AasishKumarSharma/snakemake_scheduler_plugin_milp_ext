@@ -23,3 +23,6 @@ Issues = "https://github.com/AasishKumarSharma/snakemake-scheduler-plugin-milp-e
 
 [project.entry-points."snakemake.scheduler_plugins"]
 milp-ext = "snakemake_scheduler_plugin_milp_ext:Scheduler"
+
+[tool.flake8]
+max-line-length = 120
