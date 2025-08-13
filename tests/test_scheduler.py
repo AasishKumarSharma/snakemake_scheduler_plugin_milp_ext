@@ -1,6 +1,5 @@
 """Unit tests for the MILP scheduler plugin."""
 
-import pytest
 from typing import Optional, Type
 
 from snakemake_interface_scheduler_plugins.base import SchedulerBase
@@ -27,9 +26,9 @@ def test_scheduler_settings():
         system_profile="test_profile.json",
         scheduler_config="test_config.yaml",
         time_limit=60,
-        fallback="greedy"
+        fallback="greedy",
     )
-    
+
     assert settings.system_profile == "test_profile.json"
     assert settings.scheduler_config == "test_config.yaml"
     assert settings.time_limit == 60
@@ -38,29 +37,31 @@ def test_scheduler_settings():
 
 def test_scheduler_initialization():
     """Test that the scheduler initializes correctly."""
-    from snakemake_interface_scheduler_plugins.tests import DummyDAG
     import logging
-    
+
+    from snakemake_interface_scheduler_plugins.tests import DummyDAG
+
     dag = DummyDAG()
     settings = SchedulerSettings()
     scheduler = Scheduler(dag, settings, logging.getLogger("test"))
-    
+
     assert scheduler.settings == settings
-    assert hasattr(scheduler, 'node_assignments')
-    assert hasattr(scheduler, '_job_start_times')
-    assert hasattr(scheduler, '_finished_jobs_history')
+    assert hasattr(scheduler, "node_assignments")
+    assert hasattr(scheduler, "_job_start_times")
+    assert hasattr(scheduler, "_finished_jobs_history")
 
 
 def test_default_config():
     """Test that default configuration is properly generated."""
-    from snakemake_interface_scheduler_plugins.tests import DummyDAG
     import logging
-    
+
+    from snakemake_interface_scheduler_plugins.tests import DummyDAG
+
     dag = DummyDAG()
     scheduler = Scheduler(dag, None, logging.getLogger("test"))
-    
+
     config = scheduler._get_default_config()
-    
+
     assert "scheduler" in config
     assert "type" in config["scheduler"]
     assert "optimization" in config["scheduler"]
